@@ -1,0 +1,65 @@
+<div class="modal-header">
+  <h4 class="modal-title">Реєстрація нового працівника</h4>
+  <button type="button" class="btn-close" (click)="closeModal.emit()"></button>
+</div>
+
+<div class="modal-body">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>ПІБ:&nbsp;</label><br />
+      <input
+        type="text"
+        id="name"
+        name="name"
+        [(ngModel)]="formData.name"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Номер телефону:&nbsp;</label><br />
+      <input
+        type="tel"
+        id="phone"
+        name="phone"
+        [(ngModel)]="formData.phone"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Електронна пошта:&nbsp;</label><br />
+      <input
+        type="email"
+        id="email"
+        name="email"
+        [(ngModel)]="formData.email"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Дата народження:&nbsp;</label><br />
+      <input
+        type="date"
+        id="birth_date"
+        name="birth_date"
+        [(ngModel)]="formData.birth_date"
+        required
+      />
+    </div>
+    <br />
+    <div class="d-flex justify-content-between mt-3">
+      <button
+        type="button"
+        class="btn btn-secondary"
+        (click)="closeModal.emit()"
+      >
+        Скасувати
+      </button>
+      <button type="submit" class="btn btn-primary">Зареєструвати</button>
+    </div>
+  </form>
+</div>
+
+<div class="modal-footer"></div>

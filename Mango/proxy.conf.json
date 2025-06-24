@@ -1,0 +1,7 @@
+{
+  "/get_food.php": {
+    "target": "http://localhost",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

@@ -1,0 +1,114 @@
+<app-header></app-header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="nameHolder"><h2>Меню</h2></div>
+    </div>
+  </div>
+  <div class="backgr">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="headers"><h4>Категорії</h4></div>
+        <p></p>
+        <div *ngFor="let cat of categories" class="chck">
+          <label>
+            <input type="checkbox" [(ngModel)]="selectedTypesMap[cat]" />
+            {{ cat }}
+          </label>
+        </div>
+
+        <hr />
+        <h5>Ціна:</h5>
+        <input
+          type="number"
+          [(ngModel)]="minPrice"
+          class="form-control mb-2"
+          placeholder="Від (грн)"
+        />
+        <input
+          type="number"
+          [(ngModel)]="maxPrice"
+          class="form-control mb-2"
+          placeholder="До (грн)"
+        />
+        <div id="medcat" class="d-flex gap-2">
+          <button class="btns flex-grow-1" (click)="applyFilters()">
+            Застосувати
+          </button>
+          <button class="btn btn-outline-secondary" (click)="resetFilters()">
+            Скинути
+          </button>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="headers"><h4>Оберіть вашу страву!</h4></div>
+        <p></p>
+        <input
+          type="text"
+          [(ngModel)]="searchTerm"
+          (input)="onSearchChange()"
+          class="form-control mb-3"
+          placeholder="Пошук страви за назвою..."
+        />
+        <div class="d-flex flex-column gap-3">
+          <ng-container *ngFor="let category of categories">
+            <div *ngIf="hasDishesInCategory(category)">
+              <h5 class="headers">{{ category }}</h5>
+              <div
+                *ngFor="let dish of getDishesByCategory(category)"
+                class="card"
+              >
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img
+                      [src]="dish.image_url"
+                      class="img-fluid rounded-start"
+                      [alt]="dish.name"
+                    />
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ dish.name }}</h5>
+                      <p class="card-text">
+                        <small>{{ dish.description }}</small>
+                      </p>
+                      <p class="card-text">
+                        <strong>{{ dish.price }} грн</strong>
+                      </p>
+                      <button (click)="addToCart(dish)" class="btns">Замовити!</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="headers"><h4>Інформація</h4></div>
+        <p></p>
+        <div class="alert alert-danger mt-3">
+          Увага! Деякі страви можуть містити алергени (глютен, горіхи, молочні
+          продукти, тощо...).
+          <br />
+          Ресторан не несе відповідальності за здоров'я відвідувачів, які
+          ігнорують попередження щодо алергенів.
+        </div>
+        <hr>
+        <h5>Контактні номери:</h5>
+        <i class="bi bi-telephone-fill"></i>&nbsp;<b>Менеджер:</b> +380 50 295
+        1939
+        <br />
+        <i class="bi bi-telephone-fill"></i>&nbsp;<b>Засновник:</b> +380 93 241
+        8512
+        <hr>
+        <h5>Розташування ресторану</h5>
+        <a href="https://maps.app.goo.gl/gMfwpCMyXetUofUWA"><img src="/map.png" alt="" class="mapa"></a>
+        <small>&#64;Google Company. All rights reserved.</small>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

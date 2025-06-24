@@ -1,0 +1,80 @@
+<div class="modal-header">
+  <h4 class="modal-title">Ваше замовлення</h4>
+  <button
+    type="button"
+    class="btn-close"
+    (click)="activeModal.dismiss()"
+  ></button>
+</div>
+
+<div class="modal-body">
+  <div
+    *ngIf="(cartService.cartItems$ | async)?.length === 0"
+    class="empty-cart"
+  >
+    Кошик порожній
+  </div>
+
+  <div *ngFor="let item of cartService.cartItems$ | async" class="cart-item">
+    <img [src]="item.image_url" alt="{{ item.name }}" class="item-image" />
+    <div class="item-details">
+      <h5>
+        <button
+          class="btn-close"
+          (click)="cartService.removeFromCart(item.id)"
+        ></button
+        >{{ item.name }}
+      </h5>
+      <p>{{ item.price | currency : "UAH" : "symbol-narrow" }}</p>
+    </div>
+    <div class="item-quantity">
+      <input
+        type="number"
+        min="1"
+        [value]="item.quantity"
+        (change)="onQuantityChange(item, $event)"
+      />
+    </div>
+  </div>
+
+  <div
+    class="payment-section"
+    *ngIf="(cartService.cartItems$ | async)!.length > 0"
+  >
+    <br />
+    <h5>Оплата</h5>
+    <div class="form-group">
+      <label>Номер картки:&nbsp;</label>
+      <input
+        type="text"
+        [(ngModel)]="cardNumber"
+        placeholder="1234 5678 9012 3456"
+      />
+    </div>
+    <p></p>
+    <div class="row">
+      <div class="col">
+        <label>Термін дії:&nbsp;</label>
+        <input type="text" [(ngModel)]="expiryDate" placeholder="MM/РР" />
+      </div>
+      <div class="col">
+        <label>CVV:&nbsp;</label>
+        <input type="text" [(ngModel)]="cvv" placeholder="123" />
+      </div>
+    </div>
+  </div>
+  <p></p>
+  <div class="total-price">
+    Загальна сума:
+    {{ cartService.getTotal() | currency : "UAH" : "symbol-narrow" }}
+  </div>
+  <button
+    class="btn btn-primary"
+    (click)="processPayment()"
+    [disabled]="(cartService.cartItems$ | async)?.length === 0"
+  >
+    Оплатити
+  </button>
+</div>
+
+<div class="modal-footer"></div>

@@ -1,0 +1,152 @@
+@media (max-width: 1199px) {
+ .w-100 {
+  height: 700px !important;
+ } 
+}
+
+@media (max-width: 991px) {
+ .w-100 {
+  height: 550px !important;
+ } 
+}
+
+@media (max-width: 767px) {
+ .w-100 {
+  height: 500px !important;
+ } 
+
+ #med {
+  margin-top: 5%;
+ }
+
+ #empl img {
+  height: 350px !important;
+}
+
+}
+
+.w-100 {
+  height: 750px;
+}
+
+.nameHolder {
+  padding: 2%;
+  font-weight: 500;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 0px 0px 35px gainsboro;
+  border-style: groove;
+  background-color: rgba(0, 0, 0, 0.85);
+  box-shadow: 0px 0px 20px rgb(128 57 0);
+  border-color: rgb(184, 89, 0);
+  color: white;
+}
+
+.headers {
+  padding: 1%;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 1px 5px black;
+  border-style: groove;
+}
+
+.backgr {
+  background-color: rgb(255, 255, 255);
+  border: 3px solid gainsboro;
+  border-style: double;
+  box-shadow: 0px 35px 42px black;
+  padding: 2%;
+}
+
+.card-body {
+  text-align: center;
+}
+
+.card {
+  box-shadow: 0px 0px 4px black;
+}
+
+.card img {
+  border-bottom: 2px solid black;
+}
+
+#mangoimg {
+  border-radius: 10px;
+  border-style: groove;
+  box-shadow: 0px 0px 4px black;
+  height: 266px;
+}
+
+.descr {
+  text-align: justify;
+}
+
+.cardCont {
+  position: relative;
+  overflow: hidden;
+}
+
+.cardCont img {
+  width: 100%;
+  transition: 0.3s ease;
+  display: block;
+}
+
+.cardCont:hover img {
+  filter: brightness(60%);
+}
+
+.cardCont:hover .cardOver {
+  opacity: 1;
+}
+
+.btns {
+  background-color: rgb(255, 153, 0);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btns:hover {
+  background-color: rgb(230, 138, 0);
+}
+
+.cardImg {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.cardOver {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: 0.3s ease;
+}
+
+#empl {
+  margin-top: 7%;
+}
+
+#empl img {
+  height: 280px;
+}
