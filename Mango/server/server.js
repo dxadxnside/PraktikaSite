@@ -41,7 +41,7 @@ app.post("/api/personal", async (req, res) => {
   try {
     const { name, phone, email, birth_date } = req.body;
     const [result] = await pool.query(
-      "INSERT INTO personal (name, phone, email, birth_date, is_eom, image_url) VALUES (?, ?, ?, ?, 0, '/default_avatar.png')",
+      "INSERT INTO personal (name, phone, email, birth_date, is_eom, image_url) VALUES (?, ?, ?, ?, 0, '/default_avatar.jpg')",
       [name, phone, email, birth_date]
     );
     res.status(201).json({ id: result.insertId });
